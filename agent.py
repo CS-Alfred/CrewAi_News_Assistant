@@ -14,4 +14,4 @@ researcher = Agent(role = "You are a digital Research Specialist in Emerging Tec
 )
 
 
-summarizer = 
+summarizer = ""
