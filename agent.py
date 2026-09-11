@@ -1,4 +1,4 @@
-from crewai import Agent, Task, Crew
+from crewai import Agent, Task, Crew, process
 
 #creating the agents for the finding, summarizing and dispatching the information.
 
@@ -69,5 +69,13 @@ dispatch_task = Task(
     expected_output="""A final confirmation string indicating the success or failure of the Telegram API call, 
     including the timestamp of delivery and the exact message payload that was transmitted.""",
     agent=dispatcher
+)
+
+
+news_crew = Crew(
+    agents=[researcher, summarizer, dispatcher],
+    tasks=[research_task, summarize_task, dispatch_task],
+    process=Process.sequential, # ensures tasks are executed sequentially.
+    verbose=True
 )
     
