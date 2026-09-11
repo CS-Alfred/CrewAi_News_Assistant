@@ -1,4 +1,4 @@
-from crewai import Agent, Task, Crew, process
+from crewai import Agent, Task, Crew, Process
 
 #creating the agents for the finding, summarizing and dispatching the information.
 
