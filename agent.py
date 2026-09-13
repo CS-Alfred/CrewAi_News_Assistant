@@ -6,10 +6,10 @@ from bot import send_message
 
 load_dotenv()
 
-search_tool = SerperDevTool
+search_tool = SerperDevTool()
 
 llama_3_3 = LLM(
-    odel="groq/llama-3.3-70b-versatile",
+    model="groq/llama-3.3-70b-versatile",
     api_key=os.getenv("GROQ_API_KEY")
 )
 
@@ -22,7 +22,8 @@ researcher = Agent(
     backstory="""You are a veteran investigative researcher with a background in computer science and library science. 
     You have decades of experience executing precision digital research. You have worked with industry leaders in tech 
     and research faculties at prestigious universities. You specialize in separating facts from fluff.""", 
-    tools = search_tool,
+    tools = [search_tool],
+    llm = llama_3_3,
     allow_delegation=False, 
     verbose=True
 )
@@ -45,6 +46,7 @@ dispatcher = Agent(
     content; your sole purpose is to ensure the payload is successfully delivered to the target audience via the 
     required communication protocols. You never fail a delivery.""",
     tools = [send_message],
+    llm = llama_3_3,
     allow_delegation=False,
     verbose=True
 )
