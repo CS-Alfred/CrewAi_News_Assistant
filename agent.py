@@ -1,4 +1,12 @@
+import os
+from dotenv import load_dotenv
 from crewai import Agent, Task, Crew, Process
+from crewai_tools import SerperDevTool
+
+load_dotenv()
+
+search_tool = SerperDevTool
+
 
 #creating the agents for the finding, summarizing and dispatching the information.
 
@@ -8,6 +16,7 @@ researcher = Agent(
     backstory="""You are a veteran investigative researcher with a background in computer science and library science. 
     You have decades of experience executing precision digital research. You have worked with industry leaders in tech 
     and research faculties at prestigious universities. You specialize in separating facts from fluff.""", 
+    tools = search_tool,
     allow_delegation=False, 
     verbose=True
 )
