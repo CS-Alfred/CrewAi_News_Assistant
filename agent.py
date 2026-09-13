@@ -10,6 +10,7 @@ search_tool = SerperDevTool()
 
 llama_3_3 = LLM(
     model="groq/llama-3.3-70b-versatile",
+    base_url="https://api.groq.com/openai/v1",
     api_key=os.getenv("GROQ_API_KEY")
 )
 
