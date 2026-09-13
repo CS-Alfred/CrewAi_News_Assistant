@@ -98,3 +98,9 @@ news_crew = Crew(
     verbose=True
 )
     
+if __name__ == "__main__":
+    print("Starting the News Room Crew...")
+    final_result = news_crew.kickoff()
+    print("\n==================================")
+    print("CREW EXECUTION COMPLETE!")
+    print("==================================\n")
