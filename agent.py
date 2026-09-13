@@ -1,11 +1,17 @@
 import os
 from dotenv import load_dotenv
-from crewai import Agent, Task, Crew, Process
+from crewai import Agent, Task, Crew, Process, LLM
 from crewai_tools import SerperDevTool
+from bot import send_message
 
 load_dotenv()
 
 search_tool = SerperDevTool
+
+llama_3_3 = LLM(
+    odel="groq/llama-3.3-70b-versatile",
+    api_key=os.getenv("GROQ_API_KEY")
+)
 
 
 #creating the agents for the finding, summarizing and dispatching the information.
@@ -27,6 +33,7 @@ summarizer = Agent(
     backstory="""You are a ruthless copy editor and technical writer. You have spent your career taking dense, 
     complex research reports and turning them into clear, actionable briefings for busy executives. You know how 
     to highlight the most important data without losing context.""",
+    llm = llama_3_3,
     allow_delegation=False,
     verbose=True
 )
@@ -37,6 +44,7 @@ dispatcher = Agent(
     backstory="""You are a strict, no-nonsense logistics and API coordinator. You do not edit or change the message 
     content; your sole purpose is to ensure the payload is successfully delivered to the target audience via the 
     required communication protocols. You never fail a delivery.""",
+    tools = [send_message],
     allow_delegation=False,
     verbose=True
 )
