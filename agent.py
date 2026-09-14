@@ -56,11 +56,11 @@ dispatcher = Agent(
 #Defining the task for the agents to perform.
 
 research_task = Task(
-    description="""Scour the web using your search tool to identify the 5 most impactful news stories 
+    description="""Scour the web using your search tool to identify the 3 most impactful news stories 
     published in the last 24 hours covering technology, the economy, and the stock market. 
     Prioritize highly reputable financial and tech news sources (e.g., Reuters, Bloomberg, TechCrunch) 
     and strictly ignore opinion pieces, rumors, or clickbait. Extract the core factual details of each story.""",
-    expected_output="""A structured raw data report containing 5 news items. Each item must include:
+    expected_output="""A structured raw data report containing 3 news items. Each item must include:
     - The exact Headline
     - The Publication Source
     - The URL
@@ -68,14 +68,13 @@ research_task = Task(
     agent=researcher
 )
 
-
 summarize_task = Task(
-    description="""Analyze the raw news report provided by the Researcher and distill each of the 5 stories 
+    description="""Analyze the raw news report provided by the Researcher and distill each of the 3 stories 
     into a concise, punchy 3-bullet-point summary. Eliminate all journalistic fluff and focus strictly 
     on what happened, why it matters, and any relevant market or technological impact. 
     Format the entire compilation specifically for Telegram by using appropriate emojis (e.g., 📈, 🚀, 📰) 
     for section headers and bolding key entities, company names, or financial numbers.""",
-    expected_output="""A single, highly polished, readable text block containing all 5 summarized stories, 
+    expected_output="""A single, highly polished, readable text block containing all 3 summarized stories, 
     fully formatted with Markdown and emojis, ready to be pasted directly into a messaging app. 
     Do not include any conversational filler.""",
     agent=summarizer
