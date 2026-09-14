@@ -8,9 +8,9 @@ load_dotenv()
 
 search_tool = SerperDevTool()
 
-gpt_4o = LLM(
-    model="gpt-4o-mini",
-    api_key=os.getenv("OPENAI_API_KEY")
+my_llm = LLM(
+    model="Gemini 2.5 Flash Lite",
+    api_key=os.getenv("GEMINI_API_KEY")
 )
 
 
@@ -23,7 +23,7 @@ researcher = Agent(
     You have decades of experience executing precision digital research. You have worked with industry leaders in tech 
     and research faculties at prestigious universities. You specialize in separating facts from fluff.""", 
     tools = [search_tool],
-    llm = gpt_4o,
+    llm = my_llm,
     allow_delegation=False, 
     verbose=True
 )
@@ -34,7 +34,7 @@ summarizer = Agent(
     backstory="""You are a ruthless copy editor and technical writer. You have spent your career taking dense, 
     complex research reports and turning them into clear, actionable briefings for busy executives. You know how 
     to highlight the most important data without losing context.""",
-    llm = gpt_4o,
+    llm = my_llm,
     allow_delegation=False,
     verbose=True
 )
@@ -46,7 +46,7 @@ dispatcher = Agent(
     content; your sole purpose is to ensure the payload is successfully delivered to the target audience via the 
     required communication protocols. You never fail a delivery.""",
     tools = [send_message],
-    llm = gpt_4o,
+    llm = my_llm,
     allow_delegation=False,
     verbose=True
 )
