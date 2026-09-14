@@ -8,10 +8,9 @@ load_dotenv()
 
 search_tool = SerperDevTool()
 
-llama_3_3 = LLM(
-    model="groq/llama-3.3-70b-versatile",
-    base_url="https://api.groq.com/openai/v1",
-    api_key=os.getenv("GROQ_API_KEY")
+gpt_4o = LLM(
+    model="gpt-4o-mini",
+    api_key=os.getenv("OPENAI_API_KEY")
 )
 
 
@@ -24,7 +23,7 @@ researcher = Agent(
     You have decades of experience executing precision digital research. You have worked with industry leaders in tech 
     and research faculties at prestigious universities. You specialize in separating facts from fluff.""", 
     tools = [search_tool],
-    llm = llama_3_3,
+    llm = gpt_4o,
     allow_delegation=False, 
     verbose=True
 )
@@ -35,7 +34,7 @@ summarizer = Agent(
     backstory="""You are a ruthless copy editor and technical writer. You have spent your career taking dense, 
     complex research reports and turning them into clear, actionable briefings for busy executives. You know how 
     to highlight the most important data without losing context.""",
-    llm = llama_3_3,
+    llm = gpt_4o,
     allow_delegation=False,
     verbose=True
 )
@@ -47,7 +46,7 @@ dispatcher = Agent(
     content; your sole purpose is to ensure the payload is successfully delivered to the target audience via the 
     required communication protocols. You never fail a delivery.""",
     tools = [send_message],
-    llm = llama_3_3,
+    llm = gpt_4o,
     allow_delegation=False,
     verbose=True
 )
