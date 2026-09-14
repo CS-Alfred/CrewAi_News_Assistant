@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from crewai import Agent, Task, Crew, Process, LLM
 from crewai_tools import SerperDevTool
 from bot import send_message
+import litellm
 
 load_dotenv()
 
