@@ -7,6 +7,7 @@ This application uses the CrewAi framework to coordinate a team of autonomous AI
 We can save a lot of time which is lost in browsing and reading through each blog page or website, in this project there are three agents, the __Researcher__ agent does the web searching using googles's serper api to find recent news on technology, it is then passed to the __Summarizer__ which formats the information to concise bullet points and finally the __Dispatcher__ agent sents the points to __Telegram__ channel where the user can read it.
 
 ## Video Demo
+[Multi Agent News Assistant Using CrewAI](https://youtu.be/U6RQqfgyp70)
 
 ## Features
 * Utilizes CrewAI to assign specific roles, goals, and backstories to AI agents.
