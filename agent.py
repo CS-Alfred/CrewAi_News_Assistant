@@ -9,7 +9,7 @@ load_dotenv()
 search_tool = SerperDevTool()
 
 my_llm = LLM(
-    model="gemini/gemini-2.5-flash-lite",
+    model="gemini/gemini-3.5-flash-lite",
     api_key=os.getenv("GEMINI_API_KEY")
 )
 
