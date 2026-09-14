@@ -6,7 +6,7 @@ from bot import send_message
 
 load_dotenv()
 
-search_tool = SerperDevTool()
+search_tool = SerperDevTool(search_params={"num": 3})
 
 my_llm = LLM(
     model="gemini/gemini-3.5-flash-lite",
@@ -24,6 +24,7 @@ researcher = Agent(
     and research faculties at prestigious universities. You specialize in separating facts from fluff.""", 
     tools = [search_tool],
     llm = my_llm,
+    max_iter = 3,
     allow_delegation=False, 
     verbose=True
 )
