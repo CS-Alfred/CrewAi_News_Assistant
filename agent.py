@@ -9,8 +9,8 @@ load_dotenv()
 search_tool = SerperDevTool(search_params={"num": 3})
 
 my_llm = LLM(
-    model="gemini/gemini-3.5-flash-lite",
-    api_key=os.getenv("GEMINI_API_KEY")
+    model="deepseek/deepseek-chat",
+    api_key=os.getenv("DEEPSEEK_API_KEY")
 )
 
 
